@@ -1,0 +1,1280 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Gift For You ♡</title>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #fff7fa;
+    color: #4a2633;
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+    --pink: #e88ca8;
+    --dark-pink: #b94d70;
+    --light-pink: #ffe6ee;
+    --soft-pink: #fff1f5;
+    --cream: #fffaf8;
+    --text: #4a2633;
+}
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+#loading {
+    position: fixed;
+    inset: 0;
+    background: #fff5f8;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 1s ease;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-heart {
+    font-size: 50px;
+    animation: heartbeat 1.2s infinite;
+}
+
+.loading-content p {
+    margin-top: 15px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+.hearts-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -40px;
+    color: rgba(225, 91, 130, 0.45);
+    animation: floatHeart linear forwards;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+.music-btn {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(160,70,100,.15);
+    cursor: pointer;
+    z-index: 500;
+    font-size: 20px;
+    color: var(--dark-pink);
+    transition: .3s;
+}
+
+.music-btn:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+/* =========================================================
+   OPENING
+========================================================= */
+
+.opening {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 30px;
+    background:
+        radial-gradient(circle at 20% 20%, #ffe1ea 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, #ffdce8 0%, transparent 30%),
+        #fff8fa;
+    overflow: hidden;
+}
+
+.opening::before,
+.opening::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+}
+
+.opening::before {
+    width: 300px;
+    height: 300px;
+    background: rgba(238,145,170,.15);
+    top: -100px;
+    left: -100px;
+}
+
+.opening::after {
+    width: 400px;
+    height: 400px;
+    background: rgba(244,177,196,.13);
+    bottom: -200px;
+    right: -100px;
+}
+
+.opening-card {
+    max-width: 700px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    animation: openingAppear 1.5s ease;
+}
+
+@keyframes openingAppear {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.small-title {
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--dark-pink);
+    margin-bottom: 20px;
+}
+
+.opening h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(55px, 9vw, 100px);
+    font-weight: 600;
+    line-height: .9;
+    color: #8d3e58;
+}
+
+.opening h1 span {
+    color: var(--pink);
+    font-style: italic;
+}
+
+.opening-text {
+    margin: 30px auto 15px;
+    max-width: 500px;
+    line-height: 1.8;
+    color: #805564;
+}
+
+.love-tag {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: rgba(232, 140, 168, 0.12);
+    color: var(--dark-pink);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+    font-weight: 600;
+    text-align: center;
+}
+
+.open-btn {
+    border: none;
+    padding: 15px 32px;
+    border-radius: 50px;
+    background: #b94d70;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 15px 30px rgba(185,77,112,.25);
+    transition: .35s;
+}
+
+.open-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 35px rgba(185,77,112,.35);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #b77889;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%,100% {
+        transform: translate(-50%,0);
+    }
+
+    50% {
+        transform: translate(-50%,8px);
+    }
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+#main {
+    display: none;
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+    padding: 130px 20px 80px;
+    text-align: center;
+    max-width: 850px;
+    margin: auto;
+}
+
+.section-label {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 11px;
+    color: var(--dark-pink);
+    margin-bottom: 15px;
+}
+
+.intro h2,
+.section-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(45px, 7vw, 75px);
+    line-height: 1;
+    color: #713247;
+    font-weight: 600;
+}
+
+.intro p {
+    max-width: 600px;
+    margin: 25px auto 0;
+    line-height: 2;
+    color: #805564;
+}
+
+/* =========================================================
+   PHOTO GALLERY
+========================================================= */
+
+.gallery-section {
+    padding: 50px 6% 120px;
+}
+
+.gallery {
+    max-width: 1250px;
+    margin: 60px auto 0;
+    columns: 4 250px;
+    column-gap: 22px;
+}
+
+.photo-card {
+    break-inside: avoid;
+    margin-bottom: 22px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 18px;
+    background: white;
+    padding: 8px;
+    box-shadow: 0 12px 30px rgba(126,57,80,.10);
+    transform: translateY(40px);
+    opacity: 0;
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        box-shadow .3s ease;
+}
+
+.photo-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.photo-card:hover {
+    box-shadow: 0 20px 40px rgba(126,57,80,.18);
+    transform: translateY(-8px) rotate(.5deg);
+}
+
+.photo-card img {
+    width: 100%;
+    display: block;
+    border-radius: 13px;
+    transition: transform .5s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.04);
+}
+
+.photo-caption {
+    padding: 14px 8px 9px;
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    color: #713247;
+}
+
+/* =========================================================
+   LETTER
+========================================================= */
+
+.letter-section {
+    padding: 130px 20px;
+    background: #fff0f4;
+}
+
+.letter {
+    max-width: 750px;
+    margin: 50px auto 0;
+    background: #fffdfb;
+    padding: clamp(30px, 7vw, 70px);
+    box-shadow: 0 20px 60px rgba(125,55,80,.12);
+    position: relative;
+    transform: rotate(-1deg);
+}
+
+.letter::before {
+    content: "♡";
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    font-size: 35px;
+    color: #e4a0b4;
+}
+
+.letter h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 38px;
+    margin-bottom: 25px;
+    color: #8d3e58;
+}
+
+.letter p {
+    line-height: 2;
+    color: #684351;
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+   THINGS I LOVE
+========================================================= */
+
+.love-section {
+    padding: 130px 20px;
+    text-align: center;
+}
+
+.love-grid {
+    max-width: 950px;
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.love-item {
+    background: white;
+    border-radius: 25px;
+    padding: 35px 20px;
+    box-shadow: 0 10px 30px rgba(130,60,80,.08);
+    transition: .35s;
+}
+
+.love-item:hover {
+    transform: translateY(-8px);
+}
+
+.love-icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.love-item h4 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
+    color: #78374d;
+    margin-bottom: 8px;
+}
+
+.love-item p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #8b6873;
+}
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-section {
+    min-height: 80vh;
+    padding: 120px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at center, #ffe5ed, transparent 55%),
+        #fff8fa;
+}
+
+.final-content {
+    max-width: 750px;
+}
+
+.final-heart {
+    font-size: 70px;
+    animation: heartbeat 1.5s infinite;
+    margin-bottom: 25px;
+}
+
+.final-content h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(50px, 8vw, 90px);
+    line-height: .95;
+    color: #7a334c;
+}
+
+.final-content p {
+    margin-top: 30px;
+    line-height: 2;
+    color: #805564;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    color: #ad7b8a;
+}
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(45,15,27,.92);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.lightbox.active {
+    display: flex;
+    animation: fadeIn .3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.lightbox img {
+    max-width: min(900px, 95vw);
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.4);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,.15);
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: 25px;
+    color: white;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width: 800px) {
+
+    .gallery {
+        columns: 2 160px;
+        column-gap: 12px;
+    }
+
+    .photo-card {
+        margin-bottom: 12px;
+        padding: 5px;
+        border-radius: 12px;
+    }
+
+    .photo-caption {
+        font-size: 17px;
+    }
+
+    .love-grid {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+    }
+
+    .intro {
+        padding-top: 100px;
+    }
+
+    .gallery-section {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media(max-width: 480px) {
+
+    .opening {
+        padding: 20px;
+    }
+
+    .opening h1 {
+        font-size: 65px;
+    }
+
+    .gallery {
+        columns: 2 130px;
+    }
+
+    .letter {
+        padding: 35px 25px;
+    }
+
+    .letter h3 {
+        font-size: 32px;
+    }
+
+    .music-btn {
+        width: 45px;
+        height: 45px;
+        right: 15px;
+        top: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     LOADING
+========================================================= -->
+
+<div id="loading">
+    <div class="loading-content">
+        <div class="loading-heart">♡</div>
+        <p>Preparing something special...</p>
+    </div>
+</div>
+
+<!-- Floating hearts -->
+<div class="hearts-container" id="hearts"></div>
+
+<!-- Music -->
+<button class="music-btn" id="musicBtn">♫</button>
+
+<!-- Music file -->
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- =========================================================
+     OPENING
+========================================================= -->
+
+<section class="opening" id="opening">
+
+    <div class="opening-card">
+
+        <div class="small-title">
+            a little something for you
+        </div>
+
+        <h1>
+            For <span>You</span>
+        </h1>
+
+        <div class="love-tag">Nadia Kamilia ♡ cantik, imut, gemes, lucu, sayangkuuuuuuu, kesayangan akuuuuu 💖✨😘🥰💕</div>
+
+        <p class="opening-text">
+            This little corner of the internet was made especially
+            for the prettiest girl who deserves to be reminded
+            just how special she is. ♡
+        </p>
+
+        <button class="open-btn" onclick="openGift()">
+            Open Your Gift ♡
+        </button>
+
+    </div>
+
+    <div class="scroll-indicator">
+        SCROLL ↓
+    </div>
+
+</section>
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main id="main">
+
+    <!-- INTRO -->
+
+    <section class="intro">
+
+        <div class="section-label">
+            just for you
+        </div>
+
+        <h2>
+            A little collection<br>
+            of you ♡
+        </h2>
+
+        <p>
+            Karena satu foto saja rasanya tidak pernah cukup.
+            Jadi, aku kumpulkan beberapa versi kamu yang
+            selalu berhasil membuat dunia terasa sedikit lebih indah.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         GALLERY
+    ====================================================== -->
+
+    <section class="gallery-section">
+
+        <div style="text-align:center;">
+
+            <div class="section-label">
+                memories
+            </div>
+
+            <h2 class="section-title">
+                You, You & You
+            </h2>
+
+        </div>
+
+        <div class="gallery" id="gallery"></div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LETTER
+    ====================================================== -->
+
+    <section class="letter-section">
+
+        <div style="text-align:center;">
+
+            <div class="section-label">
+                a little letter
+            </div>
+
+            <h2 class="section-title">
+                For the girl behind these pictures
+            </h2>
+
+        </div>
+
+        <div class="letter">
+
+            <h3>Dear Pretty Girl, ♡</h3>
+
+            <p>
+                Aku mungkin nggak selalu pandai mengungkapkan
+                semuanya lewat kata-kata.
+            </p>
+
+            <p>
+                Jadi kali ini aku membuat sesuatu yang sederhana,
+                sesuatu yang bisa kamu buka kapan pun kamu ingin
+                melihat betapa spesialnya kamu.
+            </p>
+
+            <p>
+                Website kecil ini mungkin tidak sempurna.
+                Tapi setiap foto di dalamnya punya satu kesamaan:
+                semuanya adalah kamu.
+            </p>
+
+            <p>
+                Dan entah kenapa, aku tidak pernah bosan melihatnya.
+            </p>
+
+            <p>
+                Tetap jadi kamu yang seperti sekarang.
+                Tetap tersenyum, tetap lucu, tetap cantik,
+                dan jangan pernah lupa kalau kamu sangat berarti. ♡
+            </p>
+
+            <p>
+                — from someone who thinks you're really special.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         THINGS I LOVE
+    ====================================================== -->
+
+    <section class="love-section">
+
+        <div class="section-label">
+            little things
+        </div>
+
+        <h2 class="section-title">
+            Things that make you, you
+        </h2>
+
+        <div class="love-grid">
+
+            <div class="love-item">
+                <div class="love-icon">♡</div>
+                <h4>Your Smile</h4>
+                <p>
+                    Ada sesuatu dari senyummu yang selalu
+                    membuat semuanya terasa lebih hangat.
+                </p>
+            </div>
+
+            <div class="love-item">
+                <div class="love-icon">✿</div>
+                <h4>Your Laugh</h4>
+                <p>
+                    Tawa kecilmu adalah salah satu hal
+                    yang tidak pernah membosankan.
+                </p>
+            </div>
+
+            <div class="love-item">
+                <div class="love-icon">✦</div>
+                <h4>Your Little Things</h4>
+                <p>
+                    Bahkan hal-hal kecil yang kamu lakukan
+                    bisa menjadi sesuatu yang sangat berarti.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FINAL
+    ====================================================== -->
+
+    <section class="final-section">
+
+        <div class="final-content">
+
+            <div class="final-heart">
+                ♡
+            </div>
+
+            <h2>
+                And somehow...
+                you're still my favorite view.
+            </h2>
+
+            <p>
+                Terima kasih sudah menjadi seseorang
+                yang begitu spesial.
+                Semoga setiap kali kamu membuka website ini,
+                kamu selalu ingat satu hal:
+                <br><br>
+                <strong>you are beautiful, exactly as you are. ♡</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        Made with ♡, especially for you.
+    </footer>
+
+</main>
+
+
+<!-- =========================================================
+     LIGHTBOX
+========================================================= -->
+
+<div class="lightbox" id="lightbox">
+
+    <button class="close-lightbox" onclick="closeLightbox()">
+        ×
+    </button>
+
+    <img id="lightboxImage" src="" alt="Photo">
+
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   PHOTO DATA
+   GANTI FOTO DI BAGIAN INI
+========================================================= */
+
+const photos = [
+
+    {
+        image: "images/foto1.jpeg",
+        caption: "Pretty as always ♡"
+    },
+
+    {
+        image: "images/foto2.jpeg",
+        caption: "My favorite view."
+    },
+
+    {
+        image: "images/foto3.jpeg",
+        caption: "Just you being you."
+    },
+
+    {
+        image: "images/foto4.jpeg",
+        caption: "Another beautiful moment."
+    },
+
+    {
+        image: "images/foto5.jpeg",
+        caption: "That smile ♡"
+    },
+
+    {
+        image: "images/foto6.jpeg",
+        caption: "Simply beautiful."
+    },
+
+    {
+        image: "images/foto7.jpeg",
+        caption: "Never getting tired of this."
+    },
+
+    {
+        image: "images/foto8.jpeg",
+        caption: "You look adorable here."
+    },
+
+    {
+        image: "images/foto9.jpeg",
+        caption: "One of my favorites."
+    },
+
+    {
+        image: "images/foto10.jpeg",
+        caption: "Beautiful, naturally."
+    },
+
+    {
+        image: "images/foto11.jpeg",
+        caption: "A little moment worth keeping."
+    },
+
+    {
+        image: "images/foto12.jpeg",
+        caption: "Still pretty. Still you."
+    }
+
+];
+
+
+/* =========================================================
+   CREATE GALLERY
+========================================================= */
+
+const gallery = document.getElementById("gallery");
+
+photos.forEach((photo, index) => {
+
+    const card = document.createElement("div");
+
+    card.className = "photo-card";
+
+    card.innerHTML = `
+        <img src="${photo.image}" alt="Photo ${index + 1}">
+        <div class="photo-caption">
+            ${photo.caption}
+        </div>
+    `;
+
+    card.addEventListener("click", () => {
+        openLightbox(photo.image, photo.caption);
+    });
+
+    gallery.appendChild(card);
+
+});
+
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        document.getElementById("loading").style.opacity = "0";
+
+        setTimeout(() => {
+            document.getElementById("loading").style.display = "none";
+        }, 1000);
+
+    }, 1200);
+
+});
+
+
+/* =========================================================
+   OPEN GIFT
+========================================================= */
+
+function openGift() {
+
+    const opening = document.getElementById("opening");
+    const main = document.getElementById("main");
+
+    opening.style.display = "none";
+    main.style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    createHearts(20);
+
+    /* Try playing music */
+
+    const music = document.getElementById("music");
+
+    music.play()
+        .then(() => {
+            musicPlaying = true;
+            document.getElementById("musicBtn").innerHTML = "♫";
+        })
+        .catch(() => {
+            console.log("Music needs user interaction.");
+        });
+
+}
+
+
+/* =========================================================
+   SCROLL ANIMATION
+========================================================= */
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+
+    });
+
+}, {
+    threshold: .12
+});
+
+
+document.querySelectorAll(".photo-card")
+    .forEach(card => observer.observe(card));
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxCaption = document.getElementById("lightboxCaption");
+
+function openLightbox(image, caption) {
+
+    lightboxImage.src = image;
+    lightboxCaption.textContent = caption;
+
+    lightbox.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+function closeLightbox() {
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+lightbox.addEventListener("click", function(e) {
+
+    if (e.target === lightbox) {
+        closeLightbox();
+    }
+
+});
+
+
+/* =========================================================
+   ESC CLOSE LIGHTBOX
+========================================================= */
+
+document.addEventListener("keydown", function(e) {
+
+    if (e.key === "Escape") {
+        closeLightbox();
+    }
+
+});
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML = Math.random() > .5 ? "♡" : "♥";
+
+    heart.style.left = Math.random() * 100 + "%";
+
+    heart.style.fontSize =
+        (Math.random() * 18 + 10) + "px";
+
+    heart.style.animationDuration =
+        (Math.random() * 5 + 5) + "s";
+
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+
+}
+
+
+function createHearts(amount = 1) {
+
+    for (let i = 0; i < amount; i++) {
+
+        setTimeout(() => {
+            createHeart();
+        }, i * 150);
+
+    }
+
+}
+
+
+setInterval(() => {
+
+    createHeart();
+
+}, 1000);
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+let musicPlaying = false;
+
+musicBtn.addEventListener("click", () => {
+
+    if (musicPlaying) {
+
+        music.pause();
+
+        musicPlaying = false;
+
+        musicBtn.innerHTML = "♫";
+
+    } else {
+
+        music.play();
+
+        musicPlaying = true;
+
+        musicBtn.innerHTML = "❚❚";
+
+    }
+
+});
+
+
+/* =========================================================
+   PARALLAX EFFECT
+========================================================= */
+
+window.addEventListener("scroll", () => {
+
+    const opening = document.querySelector(".opening");
+
+    if (opening) {
+
+        const scroll = window.scrollY;
+
+        opening.style.backgroundPosition =
+            `center ${scroll * .2}px`;
+
+    }
+
+});
+
+
+/* =========================================================
+   EXTRA HEARTS WHEN CLICKING
+========================================================= */
+
+document.addEventListener("click", function(e) {
+
+    if (
+        e.target.tagName === "BUTTON" ||
+        e.target.closest(".photo-card")
+    ) {
+
+        createHearts(3);
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
+```
